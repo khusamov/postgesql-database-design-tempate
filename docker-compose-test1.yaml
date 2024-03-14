@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:12.3-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    ports:
+      - 6000:5432
+    volumes:
+      - ./tutors.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./payments.sql:/docker-entrypoint-initdb.d/2.sql
